@@ -1,0 +1,3 @@
+/Users/qqq/Documents/University/1 course/ 1 term/programming basics/HW/cmake-build-debug/CMakeFiles/rebuild_cache.dir
+/Users/qqq/Documents/University/1 course/ 1 term/programming basics/HW/cmake-build-debug/CMakeFiles/edit_cache.dir
+/Users/qqq/Documents/University/1 course/ 1 term/programming basics/HW/cmake-build-debug/CMakeFiles/HW.dir
