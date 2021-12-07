@@ -20,7 +20,6 @@ bool isWordSuit(int *last_wotd, const int &last_word_length, int *current_word, 
     return false;
 }
 int main()
-// напечатать все слова, отличающиеся от последнего слова, и имеющие максимальную длину.
 {
     initscr();
     noecho();
@@ -33,6 +32,8 @@ int main()
     int *current_word = new int[100];
     int n = -1;
     int *arr = new int[1000];
+    int kn = 0;
+    int qn = 0;
     while ((c = getch()) != '.')
     {
         // printw("%d", c);
@@ -42,6 +43,8 @@ int main()
             {
                 echochar(c);
                 n++;
+                qn=n%80;
+                kn = n/80;
                 arr[n] = c;
             }
             if (c == 127)
@@ -49,10 +52,12 @@ int main()
                 if (n != -1)
                 {
                     arr[n] = -1;
-                    move(0, n);
+                    move(kn, qn);
                     echochar(' ');
-                    move(0, n);
+                    move(kn, qn);
                     n--;
+                    qn=n%80;
+                    kn = n/80;
                 }
             }
         }
