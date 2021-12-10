@@ -26,10 +26,10 @@ int main()
     int c;
     int max_lenght = 0;
     int current_length = 0;
-    int *last_word = new int[100];
-    int *current_word = new int[100];
+    int *last_word = new int[200];
+    int *current_word = new int[200];
     int n = -1;
-    int *arr = new int[1000];
+    int *arr = new int[400];
     int kn = 0, qn = 0;
     int j = 0;
     while ((c = getch()) != '.')
