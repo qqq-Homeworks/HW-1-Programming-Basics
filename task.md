@@ -2,4 +2,4 @@
 а) написать программу ввода такого текста с клавиатуры;
 б) напечатать все слова, отличающиеся от последнего слова, и имеющие максимальную длину.
 
-BUILD WITH USING -lncurses flag!!!
+BUILD WITH USING -lncurses flag with g++.(needed to lncurses installed in your system)

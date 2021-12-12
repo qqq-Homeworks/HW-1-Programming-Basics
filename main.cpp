@@ -5,11 +5,15 @@ bool isWordSuit(int *last_word, const int last_word_length, int *current_word, c
     {
         return false;
     }
-
     if (last_word_length != current_word_length)
     {
         return true;
     }
+    if (current_word_length == last_word_length && current_word_length == max_len)
+    {
+        return true;
+    }
+
     for (size_t i = 0; i < last_word_length; i++)
     {
         if (last_word[i] != current_word[i])
@@ -46,13 +50,13 @@ int main()
             }
             if (c == 127 && n != -1)
             {
-                    arr[n] = -1;
-                    move(kn, qn);
-                    echochar(' ');
-                    move(kn, qn);
-                    n--;
-                    qn = n % 80;
-                    kn = n / 80;
+                arr[n] = -1;
+                move(kn, qn);
+                echochar(' ');
+                move(kn, qn);
+                n--;
+                qn = n % 80;
+                kn = n / 80;
             }
         }
     }
