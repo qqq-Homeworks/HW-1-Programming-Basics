@@ -1,4 +1,5 @@
 #include <ncurses.h>
+
 bool isWordSuit(int *last_word, const int last_word_length, int *current_word, const int current_word_length, const int max_len)
 {
     if (current_word_length != max_len)
@@ -11,14 +12,13 @@ bool isWordSuit(int *last_word, const int last_word_length, int *current_word, c
     }
     if (current_word_length == last_word_length && current_word_length == max_len)
     {
-        return true;
-    }
 
-    for (size_t i = 0; i < last_word_length; i++)
-    {
-        if (last_word[i] != current_word[i])
+        for (size_t i = 0; i < last_word_length; i++)
         {
-            return true;
+            if (last_word[i] != current_word[i])
+            {
+                return true;
+            }
         }
     }
     return false;
