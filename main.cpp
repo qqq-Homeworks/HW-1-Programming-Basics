@@ -72,6 +72,7 @@ int main()
     n = nCurrent;
 
     arr[++n] = '.';
+    size_t last_word_lenght;
 
     for (size_t i = 0; i < n; i++)
     {
@@ -81,6 +82,7 @@ int main()
             {
                 max_lenght = j;
             }
+            last_word_lenght = j;
             j = 0;
         }
         else
@@ -94,12 +96,15 @@ int main()
         max_lenght = j;
     }
 
+//    printw("%d", last_word_lenght);
+
     j = 0;
-    for (size_t i = 0; i < n; i++)
+
+    for (size_t i = 0; i < n - last_word_lenght; i++)
     {
         if (arr[i] == 32)
         {
-            if (isWordSuit(last_word, max_lenght, current_word, j, max_lenght))
+            if (isWordSuit(last_word, last_word_lenght, current_word, j, max_lenght))
             {
                 for (size_t q = 0; q < j; q++)
                 {
@@ -114,14 +119,6 @@ int main()
             current_word[j] = arr[i];
             j++;
         }
-    }
-    if (isWordSuit(last_word, max_lenght, current_word, j, max_lenght))
-    {
-        for (size_t q = 0; q < j; q++)
-        {
-            echochar(current_word[q]);
-        }
-        echochar(' ');
     }
 
     while (getch() != 'q')
