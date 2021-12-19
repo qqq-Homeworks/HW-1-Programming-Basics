@@ -32,6 +32,7 @@ int main()
     int current_length = 0;
     int *last_word = new int[200];
     int *current_word = new int[200];
+    int last_word_lenght;
     int n = -1;
     int *arr = new int[400];
     int kn = 0, qn = 0;
@@ -72,7 +73,7 @@ int main()
     n = nCurrent;
 
     arr[++n] = '.';
-    size_t last_word_lenght;
+    
 
     for (size_t i = 0; i < n; i++)
     {
@@ -124,6 +125,9 @@ int main()
     while (getch() != 'q')
     {
     }
+    delete[] arr;
+    delete[] last_word;
+    delete[] current_word;
 
     endwin();
     return 0;
