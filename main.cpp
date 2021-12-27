@@ -1,4 +1,7 @@
 #include <ncurses.h>
+#include <sys/ioctl.h>
+#include <stdio.h>
+#include <unistd.h>
 
 bool isWordSuit(int *last_word, const int last_word_length, int *current_word, const int current_word_length, const int max_len)
 {
@@ -20,11 +23,13 @@ bool isWordSuit(int *last_word, const int last_word_length, int *current_word, c
             }
         }
     }
-     return false;
-  
+    return false;
 }
 int main()
 {
+    struct winsize w;
+    ioctl(STDOUT_FILENO, TIOCGWINSZ, &w);
+    int size_of_console = w.ws_col;
     initscr();
     noecho();
     int c;
@@ -45,8 +50,8 @@ int main()
             {
                 echochar(c);
                 n++;
-                qn = n % 80;
-                kn = n / 80;
+                qn = n % size_of_console;
+                kn = n / size_of_console;
                 arr[n] = c;
             }
             if (c == 127 && n != -1)
@@ -56,8 +61,8 @@ int main()
                 echochar(' ');
                 move(kn, qn);
                 n--;
-                qn = n % 80;
-                kn = n / 80;
+                qn = n % size_of_console;
+                kn = n / size_of_console;
             }
         }
     }
@@ -76,15 +81,11 @@ int main()
 
     n++;
     arr[n - 1] = '.';
-    // printw("%d\n", n);
-    /*for(int i = 0; i < n; i++) {
-        printw("%c", arr[i]);
-    }
-    printw("\n");*/
     int z = 0;
-    for (z = n - 2; z>=0; z--)
+
+    for (z = n - 2; z >= 0; z--)
     {
-        if (arr[z]==' ')
+        if (arr[z] == ' ')
         {
             break;
         }
@@ -103,15 +104,8 @@ int main()
         last_word[qq] = arr[i];
         qq++;
     }
-    // for (int i = 0; i < last_word_lenght; i++)
-    // {
-    //     echochar(last_word[i]);
-    // }
-    // printw(" %d", last_word_lenght);
 
-    // getch();
-
-    for (size_t i = 0; i < n-last_word_lenght; i++)
+    for (size_t i = 0; i < n - last_word_lenght; i++)
     {
         if (arr[i] == 32)
         {
@@ -130,13 +124,10 @@ int main()
     {
         max_lenght = j;
     }
-    if (max_lenght<last_word_lenght)
+    if (max_lenght < last_word_lenght)
     {
         max_lenght = last_word_lenght;
     }
-    
-
-//    printw(" %d %d", last_word_lenght, max_lenght);
 
     j = 0;
 
